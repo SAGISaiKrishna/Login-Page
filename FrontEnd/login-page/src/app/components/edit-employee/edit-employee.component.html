@@ -1,0 +1,106 @@
+<br>
+<br>
+<h1 class="employee" style="margin-left:auto;margin-right:auto;">UPDATE EMPLOYEE</h1>
+<br>
+<div fxLayoutAlign="center" >
+    <mat-card fxFlex="95" style="background-color: rgb(122, 230, 230);">
+        <form fxLayoutAlign="stretch" fxLayout="column" #loginform="ngForm" (ngSubmit)="editEmployee()">
+            <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+            <mat-form-field appearance="outline"  fxFlex="50" class="pr-4">
+                <mat-label>First Name</mat-label>
+              <input matInput placeholder="FirstName" [(ngModel)]="employee.firstname" minlength="2" [ngModelOptions]="{standalone: true}" required>
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="50" class="pr-4" class="left">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="LastName" [(ngModel)]="employee.lastname" [ngModelOptions]="{standalone: true}" required>
+                <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+            <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" [(ngModel)]="employee.employeeEmail" [ngModelOptions]="{standalone: true}" required>
+                <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" fxFlex="50" class="pr-4" class="left">
+                <mat-label>Active</mat-label>
+                <input matInput placeholder="Active" [(ngModel)]="employee.active" [ngModelOptions]="{standalone: true}" required>
+                <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+            <mat-form-field appearance="fill" fxFlex="50" class="pr-4">
+                <mat-label>Location</mat-label>
+                <mat-select [(ngModel)]="location.locationName" [ngModelOptions]="{standalone: true}">
+                    <mat-option *ngFor="let _location of locations" [value]="_location">
+                      {{_location}}
+                    </mat-option>
+                  </mat-select>
+                <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+               <br>
+               <mat-form-field appearance="fill" fxFlex="50" class="pr-4" class="drop">
+            <mat-label>Role</mat-label>
+             <mat-select [(ngModel)]="role.roleName" [ngModelOptions]="{standalone: true}">
+              <mat-option *ngFor="let _role of roles" [value]="_role">
+             {{_role}}
+              </mat-option>
+               </mat-select>
+                <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" fxFlex="50" class="pr-4" class="drop">
+                <mat-label>Product</mat-label>
+                <mat-select [(ngModel)]="product.productName" [ngModelOptions]="{standalone: true}">
+                    <mat-option *ngFor="let _product of products" [value]="_product">
+                      {{_product}}
+                    </mat-option>
+                  </mat-select>
+                <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+        </div>
+               <br>
+                  <h1 style="margin-left:auto;margin-right:auto;font-size: 300%;">
+                    ADDRESS
+                  </h1>
+                  <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                    <mat-label>Lane1</mat-label>
+                    <input matInput placeholder="Lane1" [(ngModel)]="address.lane1" [ngModelOptions]="{standalone: true}" required>
+                    <mat-error>This field is mandatory.</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="50" class="pr-4" class="left">
+                    <mat-label>Lane2</mat-label>
+                    <input matInput placeholder="Lane2" [(ngModel)]="address.lane2" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+                  </div>
+                  <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                    <mat-label>Street</mat-label>
+                    <input matInput placeholder="Street" [(ngModel)]="address.street" [ngModelOptions]="{standalone: true}" >
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="50" class="pr-4" class="left">
+                    <mat-label>City</mat-label>
+                    <input matInput placeholder="City" [(ngModel)]="address.city" [ngModelOptions]="{standalone: true}" required>
+                    <mat-error>This field is mandatory.</mat-error>
+                </mat-form-field>
+            </div>
+                <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+                <mat-form-field appearance="outline" fxFlex="50" class="pr-4">
+                    <mat-label>State</mat-label>
+                    <input matInput placeholder="State" [(ngModel)]="address.state" [ngModelOptions]="{standalone: true}" required>
+                    <mat-error>This field is mandatory.</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlex="50" class="pr-4" class="left">
+                    <mat-label>Pincode</mat-label>
+                    <input matInput placeholder="PinCode" [(ngModel)]="address.pinCode" [ngModelOptions]="{standalone: true}" required>
+                    <mat-error>This field is mandatory.</mat-error>
+                </mat-form-field>
+                </div>
+                <br>
+              <button mat-raised-button type="submit" class="abc" color="warn">Update Employee</button>
+          </form>
+          <!-- <small class="temp">{{message}}</small> -->
+    </mat-card>
+</div>

@@ -1,0 +1,22 @@
+<div fxLayoutAlign="center center" fxFlexFill>
+    <mat-card fxFlex="30">
+        <mat-toolbar color="primary"><span class="title-center">User Login</span></mat-toolbar>
+        <br>
+        <form fxLayoutAlign="stretch" fxLayout="column" #loginform="ngForm" (ngSubmit)="loginUser()">
+            <mat-form-field style="margin-top:5px;">
+              <input matInput placeholder="Username" [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}" required>
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field style="margin-top:5px;margin-bottom:10px;">
+                <input matInput type="password" placeholder="Password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" required minlength="6">
+                <mat-error>This field is mandatory.</mat-error>
+              </mat-form-field>
+              
+              <button mat-raised-button type="submit" color="primary">LogIn</button>
+              <br>
+              <button mat-raised-button type="button" color="warn" (click)="onRegister()">Register</button>
+          </form>
+          <small class="temp">{{message}}</small>
+    </mat-card>
+</div>

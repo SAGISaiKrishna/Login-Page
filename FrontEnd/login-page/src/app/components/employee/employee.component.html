@@ -1,0 +1,72 @@
+  <br>
+  <h1 class="employee" style="margin-left:auto;margin-right:auto;">LIST OF EMPLOYEES</h1>
+  <br>
+  <br>
+  <div>
+  <mat-form-field fxFlex="30%" class="filter" appearance="outline">
+    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter" >
+  </mat-form-field>
+ <button mat-raised-button class="button" color="primary" style="float:right; margin-left:30%; margin-top:20px; margin-bottom:20px;" (click)="onCreateEmployee()" >
+  Add Employee
+</button>
+  </div>
+<br>
+<div class="panel-body">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="margin-left:auto;margin-right:auto;">
+    <ng-container matColumnDef="no">
+            <th mat-header-cell *matHeaderCellDef> No </th>
+            <td mat-cell *matCellDef="let employees; let i = index;"> {{i+1}} </td>
+     </ng-container>
+  
+    <ng-container matColumnDef="firstname">
+        <th mat-header-cell *matHeaderCellDef> FirstName </th>
+        <td mat-cell *matCellDef="let employees"> {{employees.firstName}} </td>
+      </ng-container>
+
+    <ng-container matColumnDef="lastname">
+      <th mat-header-cell *matHeaderCellDef> LastName </th>
+      <td mat-cell *matCellDef="let employees"> {{employees.lastName}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="employeeEmail">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let employees"> {{employees.email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef> Role </th>
+        <td mat-cell *matCellDef="let employees"> {{employees.roleName}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="product">
+        <th mat-header-cell *matHeaderCellDef> Product </th>
+        <td mat-cell *matCellDef="let employees"> {{employees.productName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef> Location </th>
+        <td mat-cell *matCellDef="let employees"> {{employees.locationName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef> Active </th>
+        <td mat-cell *matCellDef="let employees"> {{employees.active}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef >Action</th>
+        <td mat-cell *matCellDef="let employees">
+            <button mat-raised-button class="button" color="warn" style='margin-right:16px' (click)="deleteEmployee(employees.empId)" >
+               <mat-icon>Delete</mat-icon>
+            </button>
+            <button mat-raised-button class="button" color="primary" style='margin-right:16px' (click)="onEditEmployee(employees.empId)" >
+              <mat-icon>Update</mat-icon>
+           </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+  
