@@ -19,7 +19,6 @@ public class UserService implements IUserService {
 
     @Autowired
     private UserRepository userRepository;
-
     @Override
     public List<String> getUsers() {
         List<User> userEntities = (List<User>) userRepository.findAll();
@@ -59,8 +58,6 @@ public class UserService implements IUserService {
         user = userRepository.save(user);}
         return new UserResponse(user.getUserId(),user.getUsername(),user.getUserEmail(),user.getPassword());
     }
-
-
     @Override
     public UserResponse updateUser(UserRequest userRequest) {
         User user= userRepository.findByUsername(userRequest.getUsername());

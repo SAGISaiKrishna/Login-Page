@@ -53,8 +53,14 @@ public class UserServiceTests {
         UserRequest userRequest = UserRequest.builder().username("SaiKrishna666999").password("sai777").userEmail("saikrishna666999@gmail.com").build();
         User user=User.builder().userId(1).username("SaiKrishna666999").password("sai777").userEmail("saikrishna666999@gmail.com").build();
         Mockito.when(repository.save(any())).thenReturn(user);
-
         Assertions.assertThat(userService.saveUser(userRequest).getUserId()).isGreaterThan(0);
+    }
+    @Test
+    public void compareUserTest() throws Exception{
+        UserRequest userRequest=UserRequest.builder().username("SaiKrishna666999").password("sai777").userEmail("saikrishna666999@gmail.com").build();
+        User user=User.builder().userId(1).username("SaiKrishna666999").password("sai777").userEmail("saikrishna666999@gmail.com").build();
+        Mockito.when(repository.findByUsername(any())).thenReturn(user);
+        Assertions.assertThat(userService.compareUser(userRequest).getUsername()).isEqualTo(userRequest.getUsername());
     }
     @Test
     public void getUsersTest() {
