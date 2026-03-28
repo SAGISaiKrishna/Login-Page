@@ -17,7 +17,7 @@ public class ProductTeamController {
     @Autowired
     private IProductTeamService productTeamService;
     @GetMapping("/products")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<ProductTeamResponse> getProductTeams() {
         ProductTeamResponse response = productTeamService.getProductTeams();
         return new ResponseEntity<>(response, HttpStatus.OK);

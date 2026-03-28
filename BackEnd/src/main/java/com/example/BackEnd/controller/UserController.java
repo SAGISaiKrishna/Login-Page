@@ -20,13 +20,13 @@ public class UserController {
     private IUserService userService;
 
     @GetMapping("/users")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<List<String>> getUsers(){
         List<String> response=userService.getUsers();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @PostMapping(value = "/user")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<UserResponse> compareUser(@RequestBody UserRequest userRequest) throws Exception {
         UserResponse response = userService.compareUser(userRequest);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
@@ -34,7 +34,7 @@ public class UserController {
 
 
     @PostMapping(value = "/users")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<UserResponse> saveUser(@RequestBody UserRequest userRequest) throws Exception {
         UserResponse response = userService.saveUser(userRequest);
         return new ResponseEntity<>(response, HttpStatus.CREATED);

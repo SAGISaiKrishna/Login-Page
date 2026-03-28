@@ -2,37 +2,40 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Employee } from './entity/employee';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeServiceService {
 
+  private apiUrl = environment.apiUrl;
+
   constructor(private _http : HttpClient) { }
 
   public getEmployeesFromRemote():Observable<any>{
-    return this._http.get<Employee[]>("http://localhost:8090/employees")
+    return this._http.get<Employee[]>(`${this.apiUrl}/employees`)
       }
   public deleteEmployee(id: number): Observable<any> {
-    return this._http.delete("http://localhost:8090/employees/"+id, { responseType: 'text' });
+    return this._http.delete(`${this.apiUrl}/employees/`+id, { responseType: 'text' });
   }
   public addEmployeeFromRemote(employee: Employee): Observable<any> {
-    return this._http.post("http://localhost:8090/employees/add",employee);
+    return this._http.post(`${this.apiUrl}/employees/add`,employee);
   }
   public editEmployeeFromRemote(employee: Employee): Observable<any> {
-    return this._http.put("http://localhost:8090/employees/edit",employee);
+    return this._http.put(`${this.apiUrl}/employees/edit`,employee);
   }
   public getLocationsFromRemote():Observable<any>{
-    return this._http.get<{location:string[]}>("http://localhost:8090/locations")
+    return this._http.get<{location:string[]}>(`${this.apiUrl}/locations`)
   }
   public getRolesFromRemote():Observable<any>{
-    return this._http.get<{role:string[]}>("http://localhost:8090/roles")
+    return this._http.get<{role:string[]}>(`${this.apiUrl}/roles`)
   }
   public getProductsFromRemote():Observable<any>{
-    return this._http.get<{productTeam:string[]}>("http://localhost:8090/products")
+    return this._http.get<{productTeam:string[]}>(`${this.apiUrl}/products`)
   }
   public getEmployeeById(id: number):Observable<any>{
-    return this._http.get("http://localhost:8090/employ/"+id)
+    return this._http.get(`${this.apiUrl}/employ/`+id)
   }
   data: number;
   public setId(id: number){

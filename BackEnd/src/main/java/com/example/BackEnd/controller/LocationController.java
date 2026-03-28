@@ -15,7 +15,7 @@ public class LocationController {
     @Autowired
     private ILocationService locationService;
     @GetMapping("/locations")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<LocationResponse> getLocations() {
         LocationResponse response = locationService.getLocations();
         return new ResponseEntity<>(response, HttpStatus.OK);

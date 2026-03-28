@@ -17,7 +17,7 @@ public class RoleController {
     @Autowired
     private IRoleService roleService;
     @GetMapping("/roles")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<RoleResponse> getRoles() {
         RoleResponse response = roleService.getRoles();
         return new ResponseEntity<>(response, HttpStatus.OK);
